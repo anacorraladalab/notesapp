@@ -1,9 +1,5 @@
-// eslint-disable-next-line no-undef
-const apiUrl = process.env.REACT_APP_API_URL;
-
 export const getNotes = () => {
-    console.log(`${apiUrl}/api/notes`);
-    return fetch(`${apiUrl}/api/notes`)
+    return fetch("/api/notes")
         .then((response) => response.json())
         .then((data) => {
             const cleanData = data.map((item) => {
@@ -23,7 +19,7 @@ export const getNotes = () => {
 };
 
 export const addNote = (data) => {
-    return fetch(`${apiUrl}/api/note`, {
+    return fetch("/api/note", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -40,7 +36,7 @@ export const addNote = (data) => {
 };
 
 export const getNote = (id) => {
-    return fetch(`${apiUrl}/api/note/${id}`)
+    return fetch(`/api/note/${id}`)
         .then((response) => response.json())
         .then((data) => {
             const cleanData = data.map((item) => {
@@ -59,7 +55,7 @@ export const getNote = (id) => {
 };
 
 export const modifyNote = (data, id) => {
-    return fetch(`${apiUrl}/api/modify/${id}`, {
+    return fetch(`/api/modify/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -76,7 +72,7 @@ export const modifyNote = (data, id) => {
 };
 
 export const deleteNote = (id) => {
-    return fetch(`${apiUrl}/api/delete/${id}`, {
+    return fetch(`/api/delete/${id}`, {
         method: "PATCH",
     })
         .then((response) => response.json())
