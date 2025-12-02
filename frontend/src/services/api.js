@@ -2,6 +2,7 @@
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const getNotes = () => {
+    console.log(`${apiUrl}/api/notes`);
     return fetch(`${apiUrl}/api/notes`)
         .then((response) => response.json())
         .then((data) => {
