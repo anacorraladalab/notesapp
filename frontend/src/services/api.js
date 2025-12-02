@@ -1,5 +1,5 @@
 export const getNotes = () => {
-    return fetch("http://localhost:3000/notes")
+    return fetch("http://localhost:3000/api/notes")
         .then((response) => response.json())
         .then((data) => {
             const cleanData = data.map((item) => {
@@ -19,7 +19,7 @@ export const getNotes = () => {
 };
 
 export const addNote = (data) => {
-    return fetch("http://localhost:3000/note", {
+    return fetch("http://localhost:3000/api/note", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export const addNote = (data) => {
 };
 
 export const getNote = (id) => {
-    return fetch(`http://localhost:3000/note/${id}`)
+    return fetch(`http://localhost:3000/api/note/${id}`)
         .then((response) => response.json())
         .then((data) => {
             const cleanData = data.map((item) => {
@@ -55,7 +55,7 @@ export const getNote = (id) => {
 };
 
 export const modifyNote = (data, id) => {
-    return fetch(`http://localhost:3000/modify/${id}`, {
+    return fetch(`http://localhost:3000/api/modify/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export const modifyNote = (data, id) => {
 };
 
 export const deleteNote = (id) => {
-    return fetch(`http://localhost:3000/delete/${id}`, {
+    return fetch(`http://localhost:3000/api/delete/${id}`, {
         method: "PATCH",
     })
         .then((response) => response.json())

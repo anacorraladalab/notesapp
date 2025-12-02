@@ -23,7 +23,7 @@ app.use(cors());
 // 6. Retornar los datos
 
 // COGER NOTAS
-app.get("/notes", async (req, res) => {
+app.get("/api/notes", async (req, res) => {
     try {
         const query = "SELECT * FROM notes WHERE deleted_at IS NULL";
 
@@ -37,7 +37,7 @@ app.get("/notes", async (req, res) => {
 });
 
 // COGER UNA NOTA ESPECÍFICA
-app.get("/note/:id", async (req, res) => {
+app.get("/api/note/:id", async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -54,7 +54,7 @@ app.get("/note/:id", async (req, res) => {
 });
 
 // CREAR NOTA
-app.post("/note", async (req, res) => {
+app.post("/api/note", async (req, res) => {
     try {
         const { title, content, photo } = req.body;
 
@@ -75,7 +75,7 @@ app.post("/note", async (req, res) => {
 // PUT => Para modificar la mayoría de las columnas
 // PATCH => Para modificar una o dos columnas
 
-app.put("/modify/:id", async (req, res) => {
+app.put("/api/modify/:id", async (req, res) => {
     try {
         const { id } = req.params;
         // Le pasaremos todos los datos aunque no se hayan modificado todos desde el frontal
@@ -98,7 +98,7 @@ app.put("/modify/:id", async (req, res) => {
 
 // ELIMINAR NOTA
 
-app.patch("/delete/:id", async (req, res) => {
+app.patch("/api/delete/:id", async (req, res) => {
     try {
         const { id } = req.params;
 
