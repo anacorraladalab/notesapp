@@ -9,8 +9,8 @@ Vamos a ver los pasos para desplegar estos archivos estáticos:
 
 1. **Preparar el Proyecto Frontend:**
 
-    - Asegúrate de que tu proyecto frontend (por ejemplo, React, Angular, Vue) esté listo para producción.
-    - Ejecuta el comando de construcción (build) para generar los archivos estáticos. Por ejemplo, en React usarías `npm run build`.
+    - Asegúrate de que tu proyecto frontend esté listo para producción.
+    - Ejecuta el comando de construcción `npm run build` para generar los archivos estáticos.
     - Esto generará una carpeta `dist` que contiene los archivos HTML, CSS y JavaScript optimizados.
 
 2. **Subir los Archivos Estáticos a un Servidor:**
@@ -21,7 +21,7 @@ Vamos a ver los pasos para desplegar estos archivos estáticos:
 3. **Configurar el Servidor Backend:**
 
     - Debemos incorporar la configuración necesaria en nuestro servidor backend para servir los archivos estáticos desde la carpeta `public`.
-    - Lo vamos a incorporar en el src/index.js
+    - Lo vamos a incorporar en el src/index.js. El require arriba y el resto al final de todos los endpoints.
 
     ```javascript
     // Módulo nativo de nodeJS
@@ -38,7 +38,7 @@ Vamos a ver los pasos para desplegar estos archivos estáticos:
 4. **Probar Localmente:**
 
     - Antes de desplegar, es importante probar que todo funciona correctamente en tu entorno local.
-    - Inicia tu servidor backend y accede a la aplicación desde el navegador para asegurarte de que los archivos estáticos se sirven correctamente.
+    - Inicia tu servidor backend y accede a la aplicación desde el navegador para asegurarte de que los archivos estáticos se sirven correctamente. Si accedemos al localhost:3000/ruta-frontend, deberíamos ver la vista.
 
 5. **Crear base de datos en la nube:**
 
@@ -70,10 +70,7 @@ Vamos a ver los pasos para desplegar estos archivos estáticos:
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
-        port: process.env.DB_PORT,
-        ssl: {
-            ca: fs.readFileSync(__dirname + "/certs/ca.pem"), // ruta a tu certificado
-        },
+        port: process.env.DB_PORT
     });
     ```
 
