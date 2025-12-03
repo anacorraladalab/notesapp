@@ -55,7 +55,7 @@ export const getNote = (id) => {
 };
 
 export const modifyNote = (data, id) => {
-    return fetch(`/api/modify/${id}`, {
+    return fetch(`/api/note/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export const modifyNote = (data, id) => {
 };
 
 export const deleteNote = (id) => {
-    return fetch(`/api/delete/${id}`, {
+    return fetch(`/api/note/${id}`, {
         method: "PATCH",
     })
         .then((response) => response.json())

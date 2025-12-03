@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "POST /note",
+			"name": "POST /api/note",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -24,12 +24,12 @@
 						}
 					}
 				},
-				"url": "localhost:3000/note"
+				"url": "localhost:3000/api/note"
 			},
 			"response": []
 		},
 		{
-			"name": "GET /notes",
+			"name": "GET /api/notes",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -41,19 +41,19 @@
 			"response": []
 		},
 		{
-			"name": "GET /note/:id",
+			"name": "GET /api/note/:id",
 			"request": {
 				"auth": {
 					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [],
-				"url": "localhost:3000/note/1"
+				"url": "localhost:3000/api/note/1"
 			},
 			"response": []
 		},
 		{
-			"name": "PUT /modify/:id",
+			"name": "PUT /api/note/:id",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -69,12 +69,12 @@
 						}
 					}
 				},
-				"url": "localhost:3000/modify/1"
+				"url": "localhost:3000/api/note/1"
 			},
 			"response": []
 		},
 		{
-			"name": "PATCH /delete/:id",
+			"name": "PATCH /api/note/:id",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -90,7 +90,7 @@
 						}
 					}
 				},
-				"url": "localhost:3000/delete/1"
+				"url": "localhost:3000/api/note/1"
 			},
 			"response": []
 		}

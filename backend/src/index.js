@@ -75,7 +75,7 @@ app.post("/api/note", async (req, res) => {
 // PUT => Para modificar la mayoría de las columnas
 // PATCH => Para modificar una o dos columnas
 
-app.put("/api/modify/:id", async (req, res) => {
+app.put("/api/note/:id", async (req, res) => {
     try {
         const { id } = req.params;
         // Le pasaremos todos los datos aunque no se hayan modificado todos desde el frontal
@@ -98,7 +98,7 @@ app.put("/api/modify/:id", async (req, res) => {
 
 // ELIMINAR NOTA
 
-app.patch("/api/delete/:id", async (req, res) => {
+app.patch("/api/note/:id", async (req, res) => {
     try {
         const { id } = req.params;
 

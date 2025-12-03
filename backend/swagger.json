@@ -1,0 +1,158 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "NotesApp API",
+        "version": "1.0.0",
+        "description": "API para la gestión de notas"
+    },
+    "servers": [
+        {
+            "url": "https://notesapp-li06.onrender.com",
+            "description": "Servidor de producción"
+        },
+        {
+            "url": "http://localhost:3000",
+            "description": "Servidor de desarrollo"
+        }
+    ],
+    "paths": {
+        "/api/notes": {
+            "get": {
+                "summary": "Lista todas las notas",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id_note": { "type": "number" },
+                                            "title": { "type": "string" },
+                                            "content": { "type": "string" },
+                                            "photo": { "type": "string" },
+                                            "deleted_at": { "type": "datetime" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/note/{id}": {
+            "get": {
+                "summary": "Obtiene una nota por su ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": { "type": "integer" }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id_note": { "type": "number" },
+                                            "title": { "type": "string" },
+                                            "content": { "type": "string" },
+                                            "photo": { "type": "string" },
+                                            "deleted_at": { "type": "datetime" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/note": {
+            "post": {
+                "summary": "Crea una nueva nota",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": { "type": "string" },
+                                    "content": { "type": "string" },
+                                    "photo": { "type": "string" }
+                                },
+                                "required": ["title", "content"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Nota creada exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/note/{id}": {
+            "put": {
+                "summary": "Actualiza una nota por su ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": { "type": "integer" }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": { "type": "string" },
+                                    "content": { "type": "string" },
+                                    "photo": { "type": "string" }
+                                },
+                                "required": ["title", "content"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Nota modificada exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/note/{id}": {
+            "summary": "Elimina una nota por ID",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": { "type": "integer" }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Nota eliminada correctamente"
+                }
+            }
+        }
+    }
+}
