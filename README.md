@@ -1,3 +1,32 @@
+## PASOS PARA CREAR LA API EN SWAGGER
+
+1. Crear el esquema de la API, para ello vamos a crear un archivo nuevo en la carpeta de /backend que se llame `swagger.json`, ahí podéis ver el ejemplo para esta app web.
+
+2. Crear una cuenta en SwaggerHub https://app.swaggerhub.com/signup
+
+3. Una vez dentro, vamos a Perfil -> Organizaciones y vamos a crear una gratuita. (Sin este paso no nos deja crear una API)
+
+4. Una vez creada le damos a acceder a Studio, que es la herramienta para crear APIS.
+
+5. Darle al botón de Create API
+
+    - Poner como Template `none`
+    - Rellenar campos (Ejemplo):
+        - Name: NotesApp
+        - Version: 1.0.0
+        - Title: NotesApp
+        - Description: API para la gestión de notas
+
+6. Copiar y pegar el esquema swagger.json en el editor. Lo formatea automáticamente a YAML, veréis que alimina las comillas y añade guiones, es el formato correcto.
+
+7. SAVE
+
+8. Donde pone la vesión 1.0.0, desplegando esa opción tenemos que hacerla pública, y publicarla.
+
+9. En el botón de Share en la esquina derecha, podemos ver el link para compartir. Debemos poner la url en el Readme de nuestro proyecto.
+
+https://app.swaggerhub.com/apis/adalab-f7e/NotesApp/1.0.0
+
 ## PASOS PARA DESPLEGAR UN PROYECTO FULL STACK
 
 Vamos a ver los pasos necesarios para desplegar un proyecto full stack, enfocándonos primero en la parte de los archivos estáticos del frontend.
@@ -70,7 +99,7 @@ Vamos a ver los pasos para desplegar estos archivos estáticos:
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
-        port: process.env.DB_PORT
+        port: process.env.DB_PORT,
     });
     ```
 
@@ -100,11 +129,11 @@ Vamos a ver los pasos para desplegar estos archivos estáticos:
 
 10. **¿No funciona? Normal, necesitamos estos cambios:** - El puerto en Render deja de ser el 3000, ahora es el que nos proporciona Render a través de la variable de entorno PORT. Por lo tanto, debemos modificar nuestro src/index.js para que escuche en ese puerto:
     `` javascript
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
-    });
-     ``
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
+ ``
     - Para curarnos en salud de errores, vamos a hacer un pequeño cambio en nuestras apis. En las rutas de nuestros enpoints vamos a añadir /api. Por ejemplo: `app.use('/api/users', usersRouter);`. Así separamos las rutas del backend de las del frontend.
     - En el frontal del proyecto, debemos modificar las llamadas a la API para que apunten a la URL del servicio que Render nos ha proporcionado. Para ello vamos a creanos dos .env en la carpeta de frontend:
         - .env.development con REACT_APP_API_URL=http://localhost:3000
