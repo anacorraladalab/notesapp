@@ -33,7 +33,10 @@
                                             "title": { "type": "string" },
                                             "content": { "type": "string" },
                                             "photo": { "type": "string" },
-                                            "deleted_at": { "type": "datetime" }
+                                            "deleted_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
                                         }
                                     }
                                 }
@@ -43,41 +46,7 @@
                 }
             }
         },
-        "/api/note/{id}": {
-            "get": {
-                "summary": "Obtiene una nota por su ID",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": { "type": "integer" }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Operación exitosa",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "id_note": { "type": "number" },
-                                            "title": { "type": "string" },
-                                            "content": { "type": "string" },
-                                            "photo": { "type": "string" },
-                                            "deleted_at": { "type": "datetime" }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
+
         "/api/note": {
             "post": {
                 "summary": "Crea una nueva nota",
@@ -104,7 +73,42 @@
                 }
             }
         },
+
         "/api/note/{id}": {
+            "get": {
+                "summary": "Obtiene una nota por su ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": { "type": "integer" }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id_note": { "type": "number" },
+                                        "title": { "type": "string" },
+                                        "content": { "type": "string" },
+                                        "photo": { "type": "string" },
+                                        "deleted_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+
             "put": {
                 "summary": "Actualiza una nota por su ID",
                 "parameters": [
@@ -136,21 +140,22 @@
                         "description": "Nota modificada exitosamente"
                     }
                 }
-            }
-        },
-        "/api/note/{id}": {
-            "summary": "Elimina una nota por ID",
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": { "type": "integer" }
-                }
-            ],
-            "responses": {
-                "200": {
-                    "description": "Nota eliminada correctamente"
+            },
+
+            "delete": {
+                "summary": "Elimina una nota por su ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": { "type": "integer" }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Nota eliminada correctamente"
+                    }
                 }
             }
         }
